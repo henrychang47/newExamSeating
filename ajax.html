@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function getData() {
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    datas = JSON.parse(this.responseText);
+                    //console.log(datas["stuID"]);
+                    //document.getElementById("txtHint").innerText = datas["stuID"][2];
+
+
+                }
+            }
+            xmlhttp.open("GET", "newpdo.php?examID=1", true);
+            xmlhttp.send();
+
+        }
+
+        setInterval(function() {
+            getData();
+        }, 3000);
+    </script>
+</head>
+
+<body>
+
+    <p>Suggestions: <span id="txtHint"></span></p>
+
+</body>
+
+</html>
